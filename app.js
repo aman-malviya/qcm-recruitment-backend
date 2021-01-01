@@ -27,7 +27,6 @@ mongoose.connect(
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  mobileNo: String,
 });
 const User = mongoose.model("User", userSchema);
 
@@ -54,7 +53,6 @@ app.post("/", function (req, res) {
   const newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    mobileNo: req.body.mobileNo,
   });
   newUser.save(function (err) {
     if (err) {
