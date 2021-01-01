@@ -10,7 +10,7 @@
     <meta name="author" content="" />
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
 
-    <title>Assign Tasks</title>
+    <title>Get User</title>
 
     <link
       rel="canonical"
@@ -43,30 +43,16 @@
     <form action="/tasks" method="POST">
       <h1 class="h3 mb-3 font-weight-normal">Records</h1>
       <br>
-        <!-- Loop -->
-         <% for(i=0;i<foundUsers.length;i++){ %>
-        <div class="grid">
-        <div value="<%= foundUsers[i]._id %>"><%= foundUsers[i]._id %></div>
-        <div value="<%= foundUsers[i].name %>"><%= foundUsers[i].name %></div>
-        <div value="<%= foundUsers[i].email %>"><%= foundUsers[i].email %></div>
-        </div>
-        <% } %>
-      <br>
-      <!-- <input
-        name="task"
+      <input
+        name="id"
         class="form-control middle"
         type="text"
-        placeholder="Task"
+        placeholder="Enter ID"
         required
       />
-      <select class="form-control" name="taskStatus" id="">
-          <option value="complete">Complete</option>
-          <option value="incomplete">Incomplete</option>
-
-      </select>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Assign Task
-      </button> -->
+        Get User
+      </button>
       <br>
       <a class="task-link" href="/">Set Records</a>
     </form>

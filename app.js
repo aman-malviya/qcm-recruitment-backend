@@ -30,13 +30,6 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
-const taskSchema = new mongoose.Schema({
-  userName: String,
-  task: String,
-  taskStatus: String,
-});
-const Task = mongoose.model("Task", taskSchema);
-
 app.get("/", function (req, res) {
   res.render("signup");
 });
@@ -58,22 +51,17 @@ app.post("/", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("success");
+      res.render("success", {id: newUser._id});
     }
   });
 });
 app.post("/tasks", function (req, res) {
-  const newTask = new Task({
-    userName: req.body.username,
-    task: req.body.task,
-    taskStatus: req.body.taskStatus,
-  });
-
-  newTask.save(function (err) {
+  const id=req.body.id;
+  User.findOne({'_id':id}, function (err, foundUser) {
     if (err) {
       console.log(err);
     } else {
-      res.render("success");
+      res.render("User", { name: foundUser.name, email:foundUser.email });
     }
   });
 });
